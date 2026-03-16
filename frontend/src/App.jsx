@@ -1,18 +1,24 @@
+// src/App.jsx
+import { useState } from "react";
+
 import ChatBox from "./components/ChatBox";
-import Upload from "./components/Upload";
+import Upload  from "./components/upload";
 
 function App() {
+  // State to track which document is selected
+  const [selectedDoc, setSelectedDoc] = useState(null);
+
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      
-      <div style={{ width: "25%", borderRight: "1px solid #ccc", padding: "20px" }}>
-        <Upload />
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <div className="w-1/4 border-r p-4 bg-gray-100">
+        <Upload selectedDoc={selectedDoc} setSelectedDoc={setSelectedDoc} />
       </div>
 
-      <div style={{ width: "75%" }}>
-        <ChatBox />
+      {/* Chat Area */}
+      <div className="w-3/4 p-4">
+        <ChatBox selectedDoc={selectedDoc} />
       </div>
-
     </div>
   );
 }
