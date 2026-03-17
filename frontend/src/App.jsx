@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import ChatBox from "./components/ChatBox";
-import Upload  from "./components/upload";
+import Upload  from "./components/Upload";
 
 function App() {
   // State to track which document is selected
