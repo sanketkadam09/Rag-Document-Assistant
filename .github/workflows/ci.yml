@@ -58,5 +58,5 @@ jobs:
                 npm run build 
 
            - name: Build frontend Docker
-             run: docker build -t raf-frontend ./frontend          
+             run: docker build -t rag-frontend ./frontend          
           
