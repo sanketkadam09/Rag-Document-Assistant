@@ -12,14 +12,14 @@ jobs:
 
         services:
               db:
-              image: postgres:15
-              env:
+               image: postgres:15
+               env:
                  POSTGRES_USER: postgres
                  POSTGRES_PASSWORD: sanketkadam09122003
                  POSTGRES_DB: rag_assistant
-              ports:
+               ports:
                  - 5432:5432
-              options: >-
+               options: >-
                   --health-cmd "pg_isready -U postgres -d rag_assistant"
                   --health-interval 10s
                   --health-timeout 5s
