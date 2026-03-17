@@ -1,0 +1,62 @@
+name: CI PIPELINE
+
+on:
+   push:
+      branches: [ main ]
+   pull_request:
+       branches: [ main ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        services:
+              db:
+              image: postgres:15
+              env:
+                 POSTGRES_USER: postgres
+                 POSTGRES_PASSWORD: sanketkadam09122003
+                 POSTGRES_DB: rag_assistant
+              ports:
+                 - 5432:5432
+              options: >-
+                  --health-cmd "pg_isready -U postgres -d rag_assistant"
+                  --health-interval 10s
+                  --health-timeout 5s
+                  --health-retries 5
+        steps:
+           - name: Checkout code
+             uses: actions/checkout@v3
+
+           - name: Set up python 
+             uses: actions/setup-python@v4
+             with:
+                 python-version: '3.11'
+
+           - name: Install backend dependencies
+             run: |
+                cd backend
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+           - name: Build backend Docker
+             run: docker build -t rag-backend ./backend
+
+           - name: Set up Node.jobs
+             uses: actions/setup-node@v3
+             with:
+               node-version: '22'
+
+           - name: install frontend dependencies
+             run: |
+                 cd frontend
+                 npm install
+
+           - name: Build frontend
+             run: |
+                cd frontend
+                npm run build 
+
+           - name: Build frontend Docker
+             run: docker build -t raf-frontend ./frontend          
+          
