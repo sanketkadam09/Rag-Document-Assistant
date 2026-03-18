@@ -18,7 +18,7 @@ def extract_text_from_pdf(file_path):
 
             else:
                 #scanned page
-                image=page.to_image(resolutio=300)
+                image=page.to_image(resolution=300)
                 ocr_text =pytesseract.image_to_string(image.original)
                 pages_text.append(ocr_text)
     return pages_text
