@@ -13,7 +13,7 @@ app.register_blueprint(upload_bp)
 app.register_blueprint(ask_bp)
 app.register_blueprint(doc_bp)
 
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/")
 def home():
