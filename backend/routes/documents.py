@@ -4,7 +4,7 @@ import os
 
 doc_bp = Blueprint("documents", __name__)
 
-UPLOAD_FOLDER = "uploads"  # folder where PDFs are stored
+UPLOAD_FOLDER = "/app/uploads"  # folder where PDFs are stored
 
 # Existing route
 @doc_bp.route("/documents", methods=["GET"])
