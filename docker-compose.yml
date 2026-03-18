@@ -1,45 +1,43 @@
-version: "3"
+version: "3.9"
 
 services:
-    
-    backend:
-        build: ./backend
-        ports:
-           - "5000:5000"
-        restart: always   
 
-        depends_on:
-            - db
-        environment:
-           DATABASE_URL: postgresql://postgres:sanketkadam09122003@db:5432/rag_assistant
-        volumes:
-            - uploads:/app/uploads
+  db:
+    image: pgvector/pgvector:pg15
+    container_name: rag_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sanketkadam09122003
+      POSTGRES_DB: rag_assistant
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
-    frontend:
-        build: ./frontend
-        ports:
-            - "5173:80"
-        depends_on:
-             - backend
-        restart: always     
+  backend:
+    build: ./backend
+    container_name: rag_backend
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:sanketkadam09122003@db:5432/rag_assistant
+    volumes:
+      - uploads:/app/uploads
 
-    db: 
-       image: pgvector/pgvector:pg15
-       container_name: rag_postgres
-       restart: always
-       environment:
-           POSTGRES_USER: postgres
-           POSTGRES_PASSWORD: sanketkadam09122003
-           POSTGRES_DB: rag_assistant
-       ports:
-          - "5432:5432"
-
-       volumes:
-          - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-          - pgdata:/var/lib/postgresql/data
+  frontend:
+    build: ./frontend
+    container_name: rag_frontend
+    ports:
+      - "5173:80"   # host 5173 → container 80
+    restart: always
+    depends_on:
+      - backend
 
 volumes:
-   pgdata:          
-   uploads:
-
-
+  pgdata:
+  uploads:
