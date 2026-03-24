@@ -64,7 +64,7 @@ function Upload({ selectedDoc, setSelectedDoc }) {
         disabled={uploading}
       />
 
-      <h3 className="text-lg font-bold mb-2">Document History</h3>
+      <h3 className="text-lg font-bold mb-2">Document History is here</h3>
       {docs.length === 0 ? (
         <p className="text-gray-500">No documents uploaded yet.</p>
       ) : (
