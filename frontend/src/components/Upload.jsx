@@ -8,7 +8,7 @@ function Upload({ selectedDoc, setSelectedDoc }) {
 
   const fetchDocuments = async () => {
     try {
-      const res = await axios.get("http://13.234.168.225:5000/documents");
+      const res = await axios.get("http://43.204.18.173:5000/documents");
       setDocs(res.data.documents);
     } catch (err) {
       console.error("Failed to fetch documents:", err);
@@ -28,7 +28,7 @@ function Upload({ selectedDoc, setSelectedDoc }) {
 
     try {
       setUploading(true);
-      await axios.post("http://13.234.168.225:5000/upload", formData, {
+      await axios.post("http://43.204.18.173:5000/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       fetchDocuments();
@@ -44,7 +44,7 @@ function Upload({ selectedDoc, setSelectedDoc }) {
     if (!window.confirm(`Are you sure you want to delete ${doc}?`)) return;
 
     try {
-      await axios.delete(`http://13.234.168.225:5000/documents/${doc}`);
+      await axios.delete(`http://43.204.18.173:5000/documents/${doc}`);
       alert(`${doc} deleted successfully`);
       if (selectedDoc === doc) setSelectedDoc(null);
       fetchDocuments();

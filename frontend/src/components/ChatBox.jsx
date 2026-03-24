@@ -29,7 +29,7 @@ function ChatBox({ selectedDoc }) {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://13.234.168.225:5000/ask", {
+      const res = await axios.post("http://43.204.18.173:5000/ask", {
         question: input,
         document: selectedDoc || null,
       });
