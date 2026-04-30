@@ -18,10 +18,12 @@ jobs:
              key: ${{ secrets.EC2_SSH_KEY }}
 
              script: |
-                cd 
+                cd ~/ragdocassistant
                 docker-compose down
 
                 docker pull ${{ secrets.DOCKER_USERNAME }}/rag-backend:latest
                 docker pull ${{ secrets.DOCKER_USERNAME }}/rag-frontend:latest
 
                 docker-compose up -d      
+
+                

@@ -15,6 +15,13 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  redis:
+    image: redis:7
+    container_name: rag_redis
+    ports:
+       - "6379:6379"
+    restart: always   
 
   backend:
     build: ./backend
@@ -24,6 +31,9 @@ services:
     restart: always
     depends_on:
       - db
+      - redis
+    env_file:
+       - ./backend/.env  
     environment:
       DATABASE_URL: postgresql://postgres:sanketkadam09122003@db:5432/rag_assistant
     volumes:
