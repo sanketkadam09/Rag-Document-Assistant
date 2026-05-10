@@ -4,6 +4,7 @@ An AI-powered document assistant built using Retrieval-Augmented Generation (RAG
 
 🚀 Features
 📄 Upload and process PDF documents
+
 🔍 Semantic search using embeddings
 🤖 AI-powered question answering
 🧠 Retrieval-Augmented Generation (RAG)
@@ -29,11 +30,13 @@ GitHub Actions
 git clone https://github.com/sanketkadam09/Rag-Document-Assistant.git
 cd Rag-Document-Assistant
 
+
 Install Dependencies
 pip install -r requirements.txt
 
 Run Flask Server
 python app.py
+
 
 Frontend Setup
 Move to Frontend
@@ -52,6 +55,7 @@ Embeddings are stored in PostgreSQL using pgvector
 User asks a question
 Similar document chunks are retrieved
 Gemini API generates a contextual response
+
 
 User Question
       ↓
