@@ -6,26 +6,45 @@ An AI-powered document assistant built using Retrieval-Augmented Generation (RAG
 📄 Upload and process PDF documents
 
 🔍 Semantic search using embeddings
+
 🤖 AI-powered question answering
+
 🧠 Retrieval-Augmented Generation (RAG)
+
 ⚡ Fast vector similarity search with pgvector
+
 💬 Interactive chat system
+
 ☁️ CI/CD setup using GitHub Actions
+
 📚 Context-aware answers from uploaded documents
+
 🛠️ Tech Stack
 Frontend
+
 React.js
+
 Backend
+
 Flask (Python)
+
 AI & Embeddings
+
 Gemini API
+
 Embedding Models
+
 Database
+
 PostgreSQL
+
 pgvector
+
 GitHub Actions
 
+
 ⚙️ Installation & Setup
+
 1️⃣ Clone Repository
 git clone https://github.com/sanketkadam09/Rag-Document-Assistant.git
 cd Rag-Document-Assistant
@@ -39,14 +58,18 @@ python app.py
 
 
 Frontend Setup
+
 Move to Frontend
+
 cd frontend
 Install Packages
 npm install
+
 Start React App
 npm run dev
 
 🧠 How RAG Works In This Project
+
 User uploads a PDF document
 Text is extracted from the document
 Document is split into smaller chunks
@@ -55,6 +78,8 @@ Embeddings are stored in PostgreSQL using pgvector
 User asks a question
 Similar document chunks are retrieved
 Gemini API generates a contextual response
+
+
 
 
 User Question
